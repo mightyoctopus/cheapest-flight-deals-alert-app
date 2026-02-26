@@ -1,18 +1,22 @@
 import requests
 from dotenv import load_dotenv
 import os
+from typing import Dict, List, Any
 
 load_dotenv()
 
 class DataManager:
 
     SHEETY_GET_ENDPOINT = "https://api.sheety.co/231e3d5f05ab41273c22ec78074b5138/bestFlightDealProjectFlightTicketWishList/prices"
-    SHEETY_PUT_ENDPOINT = "https://api.sheety.co/231e3d5f05ab41273c22ec78074b5138/bestFlightDealProjectFlightTicketWishList/prices/[Object ID]"
+    SHEETY_PUT_ENDPOINT = "https://api.sheety.co/231e3d5f05ab41273c22ec78074b5138/bestFlightDealProjectFlightTicketWishList/prices"
 
     def __init__(self):
-        self.destination_data = {}
+        self.destination_data = []
 
-    def get_destination_data(self):
+    def get_destination_data(self) -> List[Dict[str, Any]]:
+        """
+        Read from the spreadsheet and retrieve the current data
+        """
         header = {
             "Authorization": f"Bearer {os.getenv("SHEETY_TOKEN")}"
         }
@@ -23,7 +27,7 @@ class DataManager:
         if "prices" not in data:
             raise Exception(f"Sheety error: {data}")
 
-
+        ### Insert the (whole) retrieved spreadsheet data into the destination_data dict
         self.destination_data = data["prices"]
 
         return self.destination_data
