@@ -67,8 +67,8 @@ class FlightSearch:
         query = {
             "originLocationCode": origin_city_code,
             "destinationLocationCode": destination_city_code,
-            "departureDate": from_time.strftime("%Y-%m-%d"),
-            "returnDate": to_time.strftime("%Y-%m-%d"),
+            "departureDate": from_time,
+            "returnDate": to_time,
             "adults": 1,
             "nonStop": "true",
             "currencyCode": "GBP",
