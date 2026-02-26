@@ -23,7 +23,7 @@ def find_cheapest_flight(data):
     cheapest_flight = FlightData(lowest_price, departure, destination, departure_date, return_date)
 
     for flight in data["data"]:
-        price = flight["price"]["grandTotal"]
+        price = float(flight["price"]["grandTotal"])
         if price < lowest_price:
             lowest_price = price
             departure = flight["itineraries"][0]["segments"][0]["departure"]["iataCode"]
