@@ -15,7 +15,7 @@ class DataManager:
 
     def get_destination_data(self) -> List[Dict[str, Any]]:
         """
-        Read from the spreadsheet and retrieve the current data
+        Read from the spreadsheet and retrieve the current data via SHEETY API
         """
         header = {
             "Authorization": f"Bearer {os.getenv("SHEETY_TOKEN")}"
@@ -42,7 +42,7 @@ class DataManager:
             print("OBJECT ID: ", object_id)
             new_data = {
                 "price": {
-                    "iataCode": city["iataCode"]
+                    "arrivalCode": city["arrivalCode"]
                 }
             }
 
