@@ -17,6 +17,7 @@ Amadeus Search for Airport Codes by City name - https://developers.amadeus.com/s
 Twilio Messaging (SMS or WhatsApp) API - https://www.twilio.com/docs/messaging/quickstart/python
 
 ## How It Works
+![Diagram of Flight Deal Notification System](assets/Flight%20Deal%20Notification%20System.jpg)
 
 1. This app uses the Flight Search and Sheety API to populate your own copy of the Google Sheet with International Air Transport Association (IATA) codes for each city. Most of the cities in the sheet include multiple airports, you want the city code (not the airport code see here).
 
