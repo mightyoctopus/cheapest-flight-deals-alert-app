@@ -18,13 +18,13 @@ ORIGIN_CITY_IATA = "ICN"
 
 
 # ==================== Update IATA on Google Spreadsheet ====================
-
+print(f"SHEET_DATA:\n{sheet_data}")
 for row in sheet_data:
-    if row["iataCode"] == "":
-        row["iataCode"] = flight_search.get_destination_code(row["city"])
+    if row["arrivalCode"] == "":
+        row["arrivalCode"] = flight_search.get_destination_code(row["city"])
         # To slow down requests to avoid rate limit
         time.sleep(2)
-    print(f"SHEET_DATA:\n{sheet_data}")
+
     data_manager.destination_data = sheet_data
     data_manager.update_destination_codes()
 
@@ -36,14 +36,15 @@ for destination in sheet_data:
     # Flight search data via Amadeus API
     flights = flight_search.check_flights(
         ORIGIN_CITY_IATA,
-        destination["iataCode"],
-        check_the_date_after_tmr(),
-        get_date_6_months_later(),
+        destination["arrivalCode"],
+        "2026-04-01",
+        "2026-04-29",
     )
 
     cheapest_flight = find_cheapest_flight(data=flights)
-    if cheapest_flight.price != "N/A" and cheapest_flight.price < destination["lowestPrice"]:
-        print(f"Lower price flight found to {destination["city"]}!")
+    if cheapest_flight.price and cheapest_flight.price < destination["lowestPrices"]:
+        print(f"Lower price flight found for {destination["city"]}!")
+        print(f"CHEAPEST PRICE: ", cheapest_flight.price)
         notification_manager.send_whatsapp(
             message_body=f"Low price alert! Only ${cheapest_flight.price} to fly "
                          f"from {cheapest_flight.departure_airport} to {cheapest_flight.destination_airport}, "
