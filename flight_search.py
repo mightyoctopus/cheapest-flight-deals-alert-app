@@ -71,7 +71,7 @@ class FlightSearch:
             "returnDate": to_time,
             "adults": 1,
             "nonStop": "true",
-            "currencyCode": "GBP",
+            "currencyCode": "USD",
             "max": "10",
         }
 
