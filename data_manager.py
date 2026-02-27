@@ -6,6 +6,9 @@ from typing import Dict, List, Any
 load_dotenv()
 
 class DataManager:
+    """
+    Handle data of the connected spreadsheet via Sheety API
+    """
 
     SHEETY_GET_ENDPOINT = "https://api.sheety.co/231e3d5f05ab41273c22ec78074b5138/bestFlightDealProjectFlightTicketWishList/prices"
     SHEETY_PUT_ENDPOINT = "https://api.sheety.co/231e3d5f05ab41273c22ec78074b5138/bestFlightDealProjectFlightTicketWishList/prices"
