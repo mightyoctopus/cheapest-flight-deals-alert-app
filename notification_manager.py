@@ -15,10 +15,13 @@ class NotificationManager:
         sender = os.getenv("TWILIO_WHATSAPP_SENDER_NUMBER")
         recipient = os.getenv("TWILIO_WHATSAPP_RECIPIENT_NUMBER")
 
-        message = self.client.messages.create(
-            from_= f"whatsapp:{sender}",
-            to= f"whatsapp:{recipient}",
-            body=message_body
-        )
-        print("MESSAGE SID: ", message.sid)
-
+        try:
+            message = self.client.messages.create(
+                from_= f"whatsapp:{sender}",
+                to= f"whatsapp:{recipient}",
+                body=message_body
+            )
+            print("WhatsApp notification sent successfully!")
+            print("Current Status:", message.status)
+        except Exception as e:
+            print("Failed to send WhatsApp message:", e)
