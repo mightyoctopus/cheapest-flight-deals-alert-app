@@ -18,6 +18,8 @@ ORIGIN_CITY_IATA = "ICN"
 
 
 # ==================== Update IATA on Google Spreadsheet ====================
+### Get arrival airport codes and fill in it on the spreadsheet
+### P.S. IATA codes are used for flight search later in the next step
 print(f"SHEET_DATA:\n{sheet_data}")
 for row in sheet_data:
     if row["arrivalCode"] == "":
