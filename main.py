@@ -1,3 +1,7 @@
+### Connected sheet (for example):
+### https://docs.google.com/spreadsheets/d/1u-m4fz6H092na4swOTGjWbNeHNg6YFWSPSRQkhpKR8k/edit?gid=105323121#gid=105323121
+
+
 import time
 from datetime import datetime, timedelta
 from data_manager import DataManager
