@@ -36,3 +36,11 @@ Twilio Messaging (SMS or WhatsApp) API - https://www.twilio.com/docs/messaging/q
 
 ![Cheapest Flight Ticket Whatsapp Notification](assets/Cheapest%20Flight%20Ticket%20Whatsapp%20Notification.jpeg)
 3. On the Whatsapp message, an alert is received that contains the price, departure/arrival airports, and departure/return date.
+
+## Entry Point
+
+Run the application with:
+
+```bash
+python main.py
+```
